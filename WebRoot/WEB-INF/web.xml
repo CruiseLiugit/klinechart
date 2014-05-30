@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+	<!-- 定时器 begin -->
+	<!-- 1 分钟分时图 -->
+	<listener>
+		<listener-class>controller.timer.listener.Line1MinTimerManager</listener-class>
+	</listener>
+	
+	<!-- 5 分钟 K 线图 -->
+	<listener>
+		<listener-class>controller.timer.listener.K5MinsTimerManager</listener-class>
+	</listener>
+	
+	
+	<!-- 30 分钟 K 线图 -->
+	<listener>
+		<listener-class>controller.timer.listener.K30MinsTimerManager</listener-class>
+	</listener>
+	
+	
+	<!-- 1 天 K 线图 -->
+	<listener>
+		<listener-class>controller.timer.listener.KDayTimerManager</listener-class>
+	</listener>
+	
+	
+	<!-- 定时器 end -->
+
+	<session-config>
+		<session-timeout>2</session-timeout>
+	</session-config>
+
+	<servlet>
+		<servlet-name>KLineServlet</servlet-name>
+		<servlet-class>controller.servlet.KLineServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TimeLineServlet</servlet-name>
+		<servlet-class>controller.servlet.TimeLineServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>KLineJsonServlet</servlet-name>
+		<servlet-class>controller.servlet.KLineJsonServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TLineJsonServlet</servlet-name>
+		<servlet-class>controller.servlet.TLineJsonServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>KDayLineServlet</servlet-name>
+		<servlet-class>controller.servlet.KDayLineServlet</servlet-class>
+	</servlet>
+
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>KLineServlet</servlet-name>
+		<url-pattern>/kline</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TimeLineServlet</servlet-name>
+		<url-pattern>/minline</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>KLineJsonServlet</servlet-name>
+		<url-pattern>/kjson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TLineJsonServlet</servlet-name>
+		<url-pattern>/tjson</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>KDayLineServlet</servlet-name>
+		<url-pattern>/kdayline</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
